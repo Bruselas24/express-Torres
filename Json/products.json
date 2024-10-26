@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Pizza Muzarrella",
+    "description": "pizza de muzzarrella",
+    "code": "a21",
+    "price": 2000,
+    "status": true,
+    "stock": 15,
+    "category": "pizzas",
+    "thumbnails": []
+  }
+]
