@@ -30,12 +30,16 @@ class CartManager {
         return newCart;
     }
 
+    getCarts(){
+        return this.carts
+    }
+
     getCartById(id) {
         //buscamos el carrito por su id y lo retornamos
         return this.carts.find(cart => cart.id === id);
     }
 
-    addProductToCart(cid, pid) {
+    addProductToCart(cid, pid, ptitle) {
         //para añadir un producto primero recuperamos el carrito por su id
         const cart = this.getCartById(cid);
 
@@ -47,7 +51,7 @@ class CartManager {
                 cart.products[productIndex].quantity += 1;
             } else {
                 //caso contrario lo inicializamos en 1
-                cart.products.push({ product: pid, quantity: 1 });
+                cart.products.push({ product: pid, tittle: ptitle, quantity: 1 });
             }
             //guadramos en el JSON y retornamos el carrito actualizado
             this.saveCarts();

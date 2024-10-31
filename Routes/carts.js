@@ -12,6 +12,12 @@ router.post('/', (req, res) => {
     res.status(201).json(newCart);
 });
 
+// Obtener todos los carritos
+router.get('/', (req,res) => {
+    const carts = cartManager.getCarts()
+    res.send(carts)
+})
+
 // Obtener productos de un carrito
 router.get('/:cid', (req, res) => {
     //Utilizamos el metodo "getCartById" ´para obtener el carrito
@@ -26,9 +32,9 @@ router.get('/:cid', (req, res) => {
 });
 
 // Agregar producto a un carrito
-router.post('/:cid/product/:pid', (req, res) => {
+router.post('/:cid/product/', (req, res) => {
     //utilizamos el metodo "addProductToCart" 
-    const updatedCart = cartManager.addProductToCart(Number(req.params.cid), Number(req.params.pid));
+    const updatedCart = cartManager.addProductToCart(Number(req.params.cid), Number(req.body.id), req.body.title);
     if (updatedCart) {
         //si pudo actualizar el producto devolveremos el actualizado
         res.json(updatedCart);
